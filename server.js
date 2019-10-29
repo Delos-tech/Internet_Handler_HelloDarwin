@@ -29,7 +29,7 @@ app.post('/hello/register', (req, res) => {
         .then(core => res.json(core))
 });
 
-/*
+/**
  * The body is JSON that includes sender_id.
  *
  * Extract that ID and lookup the translator id.
