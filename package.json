@@ -1,0 +1,33 @@
+{
+  "name": "internet-handler-hellodarwin",
+  "version": "0.0.0",
+  "private": true,
+  "main": "server.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "lint": "eslint server.js bin lib etc migrations seeders --ext js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "nodemon server.js",
+    "start": "pm2 start server.js --name facebook-internet-handler",
+    "stop": "pm2 stop facebook-internet-handler; pm2 delete facebook-internet-handler -s &> /dev/null",
+    "migration-dev": "sequelize db:migrate --config etc/db.json",
+    "migration-undo": "sequelize db:migrate:undo --config etc/db.json",
+    "seeds": "sequelize db:seed:all --config etc/db.json --seeders-path seeders"
+  },
+  "description": "repository for sequelize article",
+  "author": "tracy.snell@delos.com",
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "morgan": "~1.9.1",
+    "sequelize": "^5.21.1",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4",
+    "sqlite3": "^4.1.0"
+  }
+}

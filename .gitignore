@@ -1,0 +1,7 @@
+node_modules
+etc/config.json
+/.idea
+/.nyc_output
+/.scannerwork
+/coverage
+*iml
