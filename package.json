@@ -10,8 +10,8 @@
     "lint": "eslint server.js bin lib etc migrations seeders --ext js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "nodemon": "nodemon server.js",
-    "start": "pm2 start server.js --name facebook-internet-handler",
-    "stop": "pm2 stop facebook-internet-handler; pm2 delete facebook-internet-handler -s &> /dev/null",
+    "start": "pm2 start server.js --name hello-darwin-internet-handler",
+    "stop": "pm2 stop hello-darwin-internet-handler; pm2 delete hello-darwin-internet-handler -s &> /dev/null",
     "migration-dev": "sequelize db:migrate --config etc/db.json",
     "migration-undo": "sequelize db:migrate:undo --config etc/db.json",
     "seeds": "sequelize db:seed:all --config etc/db.json --seeders-path seeders"

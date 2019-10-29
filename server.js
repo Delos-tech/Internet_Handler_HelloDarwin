@@ -25,6 +25,7 @@ app.use(express.json());
  *
  */
 app.post('/hello/register', (req, res) => {
+    console.log("REGISTER")
     Mapping.create(req.body)
         .then(core => res.json(core))
 });
@@ -40,6 +41,7 @@ app.post('/hello/register', (req, res) => {
 app.post('/hello', (req, res) => {
     let query;
 
+    console.log("HEY")
     let sender = req.body.sender_id;
     console.log("got ", sender);
 
@@ -70,12 +72,14 @@ function forwarderRequest(body, translatorId) {
         json: body
     };
 
+    console.log(JSON.stringify(requestArgs))
     return new Promise((resolve, reject) => {
         request(requestArgs, (error, response, data) => {
             if (error) {
+                console.log(`ERROR: ${error}`)
                 return reject(error);
             }
-
+            console.log("RESPONSE: ", response)
             return resolve(data);
         });
     });
