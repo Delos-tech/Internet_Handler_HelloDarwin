@@ -5,6 +5,6 @@ module.exports = {
   },
   httpServerAddress : {
     host: process.env.HTTP_HOST || 'localhost',
-    port: process.env.HTTP_PORT || 8089
+    port: process.env.HTTP_PORT || 8092
   }
 }
