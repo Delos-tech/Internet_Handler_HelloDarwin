@@ -11,12 +11,32 @@ const app = express();
 app.use(logger('dev'));
 app.use(express.json());
 
-
+/**
+ * incoming data is:
+ * {
+ *     "translator_id" : [translator_id],
+ *     "sender_id": [sender_id]
+ * }
+ *
+ * Sender ID is just some unique id from the sending service that identifies
+ * the user/acct.
+ *
+ * Translator ID is the id for the HelloDarwin Translator
+ *
+ */
 app.post('/hello/register', (req, res) => {
     Mapping.create(req.body)
         .then(core => res.json(core))
 });
 
+/*
+ * The body is JSON that includes sender_id.
+ *
+ * Extract that ID and lookup the translator id.
+ *
+ * Then send to the Internet forwarder using that translator id and
+ * the original body.
+ */
 app.post('/hello', (req, res) => {
     let query;
 
@@ -37,6 +57,12 @@ app.post('/hello', (req, res) => {
     })
 });
 
+/**
+ *
+ * @param body
+ * @param translatorId
+ * @returns {Promise<any>}
+ */
 function forwarderRequest(body, translatorId) {
     const requestArgs = {
         uri: `https://${proxyHost}/forward-to/${translatorId}`,
